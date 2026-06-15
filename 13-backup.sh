@@ -25,6 +25,8 @@ then
     exit 1
 fi
 
+mkdir -p $Destination
+
 if [ ! -d $Destination ]
 then
     echo -e "$R Error: '$Destination' does not exist."
