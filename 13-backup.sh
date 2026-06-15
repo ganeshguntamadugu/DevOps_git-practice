@@ -32,3 +32,13 @@ then
     echo -e "$R Error: '$Destination' does not exist."
     exit 1
 fi
+
+Files=$(find $Source -name "*.log" -mtime $Days)
+
+if [ -z $File ]
+then 
+    echo "Files$R doesn't$N exits more than $Days"
+else
+    echo "Files are$G exits$N more than $Days"
+fi
+
