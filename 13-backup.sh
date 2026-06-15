@@ -19,7 +19,7 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-if [ ! -d $Source ]
+if [ ! -d "$Source" ]
 then
     echo -e "$R Error:$N '$Source' does not exist."
     exit 1
@@ -27,27 +27,27 @@ fi
 
 mkdir -p "$Destination"
 
-if [ ! -d $Destination ]
+if [ ! -d "$Destination" ]
 then
     echo -e "$R Error: '$Destination' does not exist."
     exit 1
 fi
 
-Files=$(find $Source -name "*.log" -mtime +$Days)
+Files=$(find "$Source" -name "*.log" -mtime +$Days)
 
 if [ -z "$Files" ] # It will shows the empty files
 then 
-    echo -e "Files$R doesn't$N exits more than $Days in $Source"
+    echo -e "Files$R doesn't$N exits more than '$Days' in '$Source'"
     exit 1
 else
-    echo -e "Files are$G exits$N more than $Days in $Source"
+    echo -e "Files are$G exits$N more than '$Days' in '$Source'"
     # echo "$Files"
-    "$Files" | zip "$Destination"/logs-$(date +"%B,%d,%Y-%T").zip -@ 
+    echo "$Files" | zip "$Destination"/logs-$(date +"%B,%d,%Y-%T").zip -@ 
     echo ""
     while IFS= read -r gana #IFS, internal field seperator, empty it will ignore while space, -r is for not to ignore special charecters like /
     do
-        echo "Deleting file $gana"
-        rm -rf $gana
-    done <<< $Files 
+        echo "Deleting file '$gana'"
+        rm -rf "$gana"
+    done <<< "$Files" 
 fi
 
