@@ -11,7 +11,7 @@ Y="\e[33m"
 N="\e[0m"
 
 Usage(){
-    echo "Usage: $0 <source-file> <destination-file> [days]"
+    echo "Usage: $0 <source-file> <destination-file> <days>"
 }
 
 if [ $# -lt 2 ]; then
