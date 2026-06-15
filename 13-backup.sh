@@ -42,7 +42,7 @@ then
 else
     echo -e "Files are$G exits$N more than $Days in $Source"
     # echo "$Files"
-    $Files | zip logs-$(date +"%B,%d,%Y-%T") -@  
+    $Files | zip $Destination/logs$(date +"%B,%d,%Y-%T").zip -@  
     echo ""
     while IFS= read -r gana #IFS, internal field seperator, empty it will ignore while space, -r is for not to ignore special charecters like /
     do
