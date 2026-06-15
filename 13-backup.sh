@@ -1,30 +1,34 @@
 #!/bin/bash
 
-# Simple backup script: copy one file to another location.
-# Usage: ./13-backup.sh /path/to/source/file /path/to/destination/file
+Source=$1
+Destination=$2
+Days=${3:-7} # Default to 7 days if not provided
 
-set -euo pipefail
+#Color 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <source-file> <destination-file>"
-  exit 1
+Usage(){
+    echo "Usage: $0 <source-file> <destination-file> [days]"
+}
+
+if [ $# -lt 2 ]; then
+    Usage
+    exit 1
 fi
 
-SOURCE="$1"
-DEST="$2"
-
-if [ ! -d "$SOURCE" ]; then
-  echo "Error: source file '$SOURCE' does not exist or is not a regular file."
-  exit 2
+if [ ! -d $Source]
+then
+    echo -e "$R Error:$N '$Source' does not exist."
+    exit 1
+else
 fi
 
-DEST_DIR=$(dirname "$DEST")
-if [ ! -d "$DEST_DIR" ]; then
-  echo "Destination directory '$DEST_DIR' does not exist. Creating it..."
-  mkdir -p "$DEST_DIR"
+if [ ! -d $Destination ]
+then
+    echo -e "$R Error: '$Destination' does not exist."
+    exit 1
+else
 fi
-
-cp -p "$SOURCE" "$DEST"
-
-echo "Backup complete: '$SOURCE' -> '$DEST'"
-
