@@ -37,8 +37,8 @@ Files=$(find $Source -name "*.log" -mtime $Days)
 
 if [ -z $File ]
 then 
-    echo "Files$R doesn't$N exits more than $Days"
+    echo -e "Files$R doesn't$N exits more than $Days"
 else
-    echo "Files are$G exits$N more than $Days"
+    echo -e "Files are$G exits$N more than $Days"
 fi
 
