@@ -19,7 +19,7 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-if [ ! -d $Source]
+if [ ! -d $Source ]
 then
     echo -e "$R Error:$N '$Source' does not exist."
     exit 1
