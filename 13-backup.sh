@@ -48,14 +48,14 @@ else
     echo ""
     if [ -f $Zip_file ]
     then 
-        echo "Zipping files$G Successfull$N"
+        echo -e "Zipping files$G Successfull$N"
         while IFS= read -r gana #IFS, internal field seperator, empty it will ignore while space, -r is for not to ignore special charecters like /
         do
             echo "Deleting file '$gana'"
             rm -rf "$gana"
         done <<< "$Files" 
     else
-        echo "Zipping files$R Failed$N"
+        echo -e "Zipping files$R Failed$N"
     fi
 fi
 
