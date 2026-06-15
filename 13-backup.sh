@@ -2,7 +2,7 @@
 
 Source=$1
 Destination=$2
-Days=${3:+7} # Default to 7 days if not provided
+Days=${3:-7} # Default to 7 days if $3 not provided
 
 #Color 
 R="\e[31m"
