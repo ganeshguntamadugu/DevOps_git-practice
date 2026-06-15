@@ -2,7 +2,7 @@
 
 Source=$1
 Destination=$2
-Days=${3:-7} # Default to 7 days if not provided
+Days=${3:+7} # Default to 7 days if not provided
 
 #Color 
 R="\e[31m"
@@ -37,8 +37,8 @@ Files=$(find $Source -name "*.log" -mtime $Days)
 
 if [ -z $File ]
 then 
-    echo -e "Files$R doesn't$N exits more than $Days"
+    echo -e "Files$R doesn't$N exits more than $Days in $Source"
 else
-    echo -e "Files are$G exits$N more than $Days"
+    echo -e "Files are$G exits$N more than $Days in $Source"
 fi
 
