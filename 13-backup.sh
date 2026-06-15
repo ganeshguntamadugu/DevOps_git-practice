@@ -34,6 +34,7 @@ then
 fi
 
 Files=$(find "$Source" -name "*.log" -mtime +$Days)
+Zip_file="$Destination"/logs-$(date +"%B,%d,%Y-%T").zip
 
 if [ -z "$Files" ] # It will shows the empty files
 then 
@@ -42,12 +43,19 @@ then
 else
     echo -e "Files are$G exits$N more than '$Days' in '$Source'"
     # echo "$Files"
-    echo "$Files" | zip "$Destination"/logs-$(date +"%B,%d,%Y-%T").zip -@ 
+    echo "$Files" | zip "$Zip_file" -@ 
+
     echo ""
-    while IFS= read -r gana #IFS, internal field seperator, empty it will ignore while space, -r is for not to ignore special charecters like /
-    do
-        echo "Deleting file '$gana'"
-        rm -rf "$gana"
-    done <<< "$Files" 
+    if [ -f $Zip_file ]
+    then 
+        echo "Zipping files$G Successfull$N"
+        while IFS= read -r gana #IFS, internal field seperator, empty it will ignore while space, -r is for not to ignore special charecters like /
+        do
+            echo "Deleting file '$gana'"
+            rm -rf "$gana"
+        done <<< "$Files" 
+    else
+        echo "Zipping files$R Failed$N"
+    fi
 fi
 
