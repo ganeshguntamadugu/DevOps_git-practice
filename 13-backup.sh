@@ -11,7 +11,7 @@ Y="\e[33m"
 N="\e[0m"
 
 Usage(){
-    echo "Usage: $0 <source-file> <destination-file> <days>"
+    echo -e "$R Usage:$N $0 <source-file> <destination-file> <days>"
 }
 
 if [ $# -lt 2 ]; then
@@ -23,12 +23,10 @@ if [ ! -d $Source]
 then
     echo -e "$R Error:$N '$Source' does not exist."
     exit 1
-else
 fi
 
 if [ ! -d $Destination ]
 then
     echo -e "$R Error: '$Destination' does not exist."
     exit 1
-else
 fi
