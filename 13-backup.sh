@@ -33,12 +33,13 @@ then
     exit 1
 fi
 
-Files=$(find $Source -name "*.log" -mtime $Days)
+Files=$(find $Source -name "*.log" -mtime +$Days)
 
 if [ -z $Files ]
 then 
     echo -e "Files$R doesn't$N exits more than $Days in $Source"
 else
     echo -e "Files are$G exits$N more than $Days in $Source"
+    echo "$Files"
 fi
 
