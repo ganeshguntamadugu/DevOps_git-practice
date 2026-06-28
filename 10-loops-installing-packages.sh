@@ -8,7 +8,7 @@ N="\e[0m"
 
 #Functions
 ROOT_ACCESS(){
-    USERID=$(id -u)
+    USERID=$(id -u) #To check the current user
 
     if [ $USERID -ne 0 ]
     then 

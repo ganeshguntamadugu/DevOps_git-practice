@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Installing git
-USERID=$(id -u)
+USERID=$(id -u) #To check the current user
 
 if [ $USERID -ne 0 ]
 then 
